@@ -1,6 +1,7 @@
 package org.example.springboot.web;
 
-import config.auth.dto.SessionUser;
+import org.example.springboot.config.auth.LoginUser;
+import org.example.springboot.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.example.springboot.service.posts.PostsService;
 import org.example.springboot.web.dto.PostsResponseDto;
@@ -19,14 +20,18 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {  // Model 서버 템플릿 엔지에서 사용할 수 있는 객체를 저장할 수 있음.
+    public String index(Model model, @LoginUser SessionUser user) {  // Model 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있음.
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null) {
             model.addAttribute("userName", user.getName());
         }
         return "index";
+    }
+
+    @GetMapping("/posts/save")
+    public String postsSave() {
+        return "posts-save";
     }
 
     @GetMapping("/posts/update/{id}")
