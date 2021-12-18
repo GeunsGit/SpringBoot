@@ -35,10 +35,6 @@ public class PostsRepositoryTest {
         String content = "테스트 본문";
 
         postsRepository.save(Posts.builder()
-                /* postsRepository.save
-                테이블 posts에 insert/update 쿼리를 실행
-                id 값이 있다면 update가, 없다면 insert 쿼리가 실행
-                 */
                 .title(title)
                 .content(content)
                 .author("geunji9505@gmail.com")
@@ -46,9 +42,6 @@ public class PostsRepositoryTest {
 
         //when
         List<Posts> postsList = postsRepository.findAll();
-        /* postsRepository.findAll
-        테이블 posts에 있는 모든 데이터를 조회해오는 메소드
-         */
 
         //then
         Posts posts = postsList.get(0);
