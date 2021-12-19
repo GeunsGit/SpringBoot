@@ -45,8 +45,8 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: geuns-springboot-build
     key: SpringBoot.zip
-    build_type: geuns-springboot-webservice
-    deployment_gruop: geuns-springboot-webservice-group
+    build_type: SpringBoot
+    deployment_gruop: SpringBoot-group
     region: ap-northeast-2
     wait-until-deployed: true
     on:
