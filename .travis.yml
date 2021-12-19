@@ -35,6 +35,16 @@ deploy:
     on:
       all_branches: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: geuns-springboot-build
+    key: SpringBoot.zip
+    build_type: geuns-springboot-webservice
+    deployment_gruop: geuns-springboot-webservice-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+
 # CI 실행 완료 시 메일로 알람
 notifications:
   email:
